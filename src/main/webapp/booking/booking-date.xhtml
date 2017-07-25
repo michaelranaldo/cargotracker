@@ -35,9 +35,9 @@
                             </h:panelGrid>
 
                             <h:panelGrid columns="2" id="durationPanel" styleClass="registrationPanelGrid" style="margin: 0 auto;" >
-                                <p:outputLabel value="A journey can't start and end the same day!" rendered="#{bookingBackingBean.duration eq 0}"/>
-                                <p:outputLabel value="Journey duration is one day." rendered="#{bookingBackingBean.duration eq 1}"/>
-                                <p:outputLabel value="Journey duration is #{bookingBackingBean.duration} days." rendered="#{bookingBackingBean.duration gt 1}"/>
+                                <p:outputLabel id="JourneyTimeIncorrect" value="A journey can't start and end the same day!" rendered="#{bookingBackingBean.duration eq 0}"/>
+                                <p:outputLabel id="JourneyTimeSingular" value="Journey duration is one day." rendered="#{bookingBackingBean.duration eq 1}"/>
+                                <p:outputLabel id="JourneyTimePlural" value="Journey duration is #{bookingBackingBean.duration} days." rendered="#{bookingBackingBean.duration gt 1}"/>
                             </h:panelGrid>
 
                             <hr/>   
@@ -45,7 +45,8 @@
                             <h:panelGrid columns="5" styleClass="registrationPanelGrid" style="margin: 0 auto;">
                                 <p:commandButton value="Back" action="booking-destination" />
                                 <p:commandButton value="Cancel" action="/admin/dashboard" />
-                                <p:commandButton value="Book Cargo" id="bookBtn" action="#{bookingBackingBean.register()}" disabled="#{!bookingBackingBean.bookable}"/>
+                                <p:commandButton value="Book Cargo" id="bookBtn" action="#{bookingBackingBean.register()}" disabled="#{!bookingBackingBean.bookable}" ajax="false">
+                                </p:commandButton>
                             </h:panelGrid>
 
                         </h:form>
