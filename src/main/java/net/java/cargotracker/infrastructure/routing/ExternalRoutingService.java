@@ -63,11 +63,7 @@ public class ExternalRoutingService implements RoutingService {
         String destination = routeSpecification.getDestination().getUnLocode()
                 .getIdString();
 
-        List<TransitPath> transitPaths = graphTraversalResource
-                .queryParam("origin", origin)
-                .queryParam("destination", destination)
-                .request(MediaType.APPLICATION_JSON_TYPE)
-                .get(new GenericType<List<TransitPath>>() {
+        List<TransitPath> transitPaths = graphTraversalResource.queryParam("origin", origin).queryParam("destination", destination).request(MediaType.APPLICATION_JSON_TYPE).get(new GenericType<List<TransitPath>>() {
                 });
 
         // The returned result is then translated back into our domain model.
